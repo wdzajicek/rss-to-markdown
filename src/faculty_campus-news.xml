@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Faculty: CampusNews2</title>
+    <link>https://my.kcc.edu/faculty/Lists/CampusNews2/AllItems.aspx</link>
+    <description>RSS feed for the CampusNews2 list.</description>
+    <lastBuildDate>Wed, 19 Oct 2022 16:22:34 GMT</lastBuildDate>
+    <generator>Microsoft SharePoint Foundation RSS Generator</generator>
+    <ttl>60</ttl>
+    <language>en-US</language>
+    <image>
+      <title>Faculty: CampusNews2</title>
+      <url>https://my.kcc.edu/faculty/_layouts/15/images/siteIcon.png</url>
+      <link>https://my.kcc.edu/faculty/Lists/CampusNews2/AllItems.aspx</link>
+    </image>
+    <item>
+      <title>VeriCite replacing Turnitin - Fall 2017</title>
+      <link>https://my.kcc.edu/faculty/Lists/CampusNews2/CustomDispForm.aspx?ID=1</link>
+      <description><![CDATA[<div><b>Article Description:</b> VeriCite plagiarism detection software is now available for use in Canvas.  The simple to use VeriCite native integration is replacing the Turnitin LTI tool which will no longer be available once summer term concludes.  </div>
+<div><b>Article Category:</b> Insider Info</div>
+<div><b>Article Content:</b> <div>VeriCite plagiarism detection software is now available for use in Canvas. &#160;The simple to use VeriCite native integration is replacing the Turnitin LTI tool which will no longer be available once summer term concludes. &#160;Also, for those faculty who participated in the spring VeriCite pilot, be aware that there is now an improved VeriCite reports interface.&#160;</div><div><br></div><div>Please contact Craig Keigher for more information</div><div>(815) 802-8402</div><div>ckeigher@kcc.edu<br></div><p><br></p></div>
+<div><b>Article Date:</b> 7/24/2017</div>
+<div><b>Expires:</b> 8/18/2017</div>
+]]></description>
+      <author>Craig Keigher</author>
+      <pubDate>Mon, 24 Jul 2017 19:10:25 GMT</pubDate>
+      <guid isPermaLink="true">https://my.kcc.edu/faculty/Lists/CampusNews2/CustomDispForm.aspx?ID=1</guid>
+    </item>
+    <item>
+      <title>Pearson REVEL integration with Canvas</title>
+      <link>https://my.kcc.edu/faculty/Lists/CampusNews2/CustomDispForm.aspx?ID=2</link>
+      <description><![CDATA[<div><b>Article Description:</b> Pearson has now released an integration with Canvas for their REVEL app.  The integration has been setup and is now available for instructors to begin linking courses at their convenience.
+
+Please contact Craig Keigher for more information
+(815) 802-8402
+ckeigher@kcc.edu</div>
+<div><b>Article Category:</b> Insider Info</div>
+<div><b>Article Content:</b> <div>Pearson has now released an integration with Canvas for their REVEL app. &#160;The integration has been setup and is now available for instructors to begin linking courses at their convenience.</div><div><br></div><div>Please contact Craig Keigher for more information</div><div>(815) 802-8402</div><div>ckeigher@kcc.edu<br></div><p><br></p></div>
+<div><b>Article Date:</b> 7/24/2017</div>
+<div><b>Expires:</b> 8/18/2017</div>
+]]></description>
+      <author>Craig Keigher</author>
+      <pubDate>Mon, 24 Jul 2017 19:12:50 GMT</pubDate>
+      <guid isPermaLink="true">https://my.kcc.edu/faculty/Lists/CampusNews2/CustomDispForm.aspx?ID=2</guid>
+    </item>
+  </channel>
+</rss>
