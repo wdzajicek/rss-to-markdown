@@ -1,11 +1,11 @@
 const fs = require('fs');
-const colors = require('colors');
-const { cleanContent } = require('./helpers/cleanContent');
+const colors = require('colors'); // Colored console output
+const { cleanContent } = require('./helpers/cleanContent'); // transforms strings to desired format
 let Parser = require('rss-parser');
 let parser = new Parser({
   timeout: 100000
 });
-
+// Configure this object to set the source file and destination path
 const config = {
   input: {
     source: 'update-articles_2017-2022.xml',
@@ -14,7 +14,7 @@ const config = {
     path: './dist/update',
   }
 }
-
+// Setup a theme for colors (colored console output)
 colors.setTheme({
   info: 'brightCyan',
   warn: 'yellow',
@@ -64,7 +64,7 @@ function processFeed(feed) {
     const fileContent = fileArray.join('');
     const file = title.replace(/[^a-zA-z0-9\s]/g, '');
     const filename = file.trim().replace(/\s/g, '-').toLowerCase();
-    const postname = `${year}-${month}-${day}-${filename}`;
+    const postname = `${year}-${month}-${day}-${filename.replace(/--/g, '-')}`;
 
     createFolders(config.output.path, postname, fileContent);
   });
