@@ -41,10 +41,37 @@ function createFolders(path, postname, content) {
 }
 
 const zeroDateTime = date => date.setHours(0, 0, 0, 0);
-const clean = str => str.replace(
-  /&#58;/g,
-  ':'
-);
+const changeImageLocation = str => {
+  return (
+    str
+      .replace(
+        /src="\/sites\/updateeditor\/SiteAssets\/Lists\/Update%20News%20articles\/AllItems\/([^"]+)"/g,
+        `src="https://update.kcc.edu/feed/images/$1"`
+      )
+  )
+}
+const changePDFLocation = str => {
+  return (
+    str
+      .replace(
+        /href="\/&#58;b&#58;\/r\/sites\/updateeditor\/Shared%20Documents\/([^"]+)"/g,
+        `href="https://cdn.kcc.edu/update-documents/$1"`
+      )
+  )
+}
+const clean = str => {
+  return (
+    str
+      .replace(
+        /&#58;/g,
+        ':'
+      )
+      .replace(
+        /’/g,
+        `'`
+      )
+  );
+}
 
 function init(feed) {
   feed.value.forEach(item => {
@@ -81,6 +108,9 @@ function init(feed) {
       const thumbnail = (thumb !== null) ? `${IMAGE_BASEURL}${JSON.parse(thumb).fileName.replace(/\s/g, '%20')}` : `${IMAGE_BASEURL}kcc-blue-100x100.svg`;
       const alt = (image_alt === null) ? null : image_alt.replace(/"/g, "'");
       const img = (image === null) ? null : `${IMAGE_BASEURL}${JSON.parse(image).fileName.replace(/\s/g, '%20')}`;
+      const articleWithPDFs = changePDFLocation(content);
+      const articleWithImages = changeImageLocation(articleWithPDFs);
+      const cleanContent = clean(articleWithImages);
       // construct our file content
       const fileArray = [
         '---', // YAML front-matter start
@@ -95,7 +125,7 @@ function init(feed) {
         `\narticle_image_alt: ${(!!alt && alt.search(/:/g) !== -1) ? `"${alt}"`: alt}`,
         `\n---`, // YAML front-matter end
         `\n`,
-        `\n${clean(content)}`
+        `\n${cleanContent}`
       ];
 
       const fileContent = fileArray.join('');
