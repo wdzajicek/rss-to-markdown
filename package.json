@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "process-update": "node process-update-feed.js"
+    "process-update": "node process-update-feed.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^5.3.0",
     "colors": "1.4.0",
     "rss-parser": "^3.12.0"
   }

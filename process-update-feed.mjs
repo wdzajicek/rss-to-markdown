@@ -1,40 +1,38 @@
-const feed = require('./src/update.json');
-const fs = require('fs');
-const colors = require('colors'); // Colored console output
+// const feed = require('./src/update.json');
+
+import { mkdir, writeFile } from 'node:fs';
+import chalk from 'chalk';
 // const { cleanContent } = require('./helpers/cleanContent'); // transforms strings to desired format
-// let Parser = require('rss-parser');
-// const FEED_URL = 'https://update.kcc.edu/feed/update.json';
+
+const FEED_URL = 'https://update.kcc.edu/feed/update.json';
 const IMAGE_BASEURL = 'https://update.kcc.edu/feed/images/';
-// let parser = new Parser({
-//   timeout: 100000
-// });
+
+async function fetchFeed(url) {
+  const res = await fetch(url);
+  const json = res.json();
+
+  return json;
+}
+
 // Configure this object to set the source file and destination path
 const config = {
-  input: {
-    source: feed,
-  },
   output: {
-    path: './dist/archive-nov',
+    path: './dist/test',
   }
 }
-// Setup a theme for colors (colored console output)
-colors.setTheme({
-  info: 'brightCyan',
-  warn: 'yellow',
-  success: 'green',
-  debug: 'cyan',
-  error: 'red'
-});
+
+// Setup a single color theme for chalk
+const info = chalk.cyanBright;
 
 function createFiles(path, postname, content) {
-  fs.writeFile(`${path}/${postname}.md`, content, (err) => {
+  writeFile(`${path}/${postname}.md`, content, (err) => {
     if (err) throw err;
-    console.log(`${colors.info('[WROTE FILE]')}: ${path}/${postname}.md`);
+    console.log(`${info('[WROTE FILE]')}: ${path}/${postname}.md`);
   });
 }
 
 function createFolders(path, postname, content) {
-  fs.mkdir(path, { recursive: true }, (err) => {
+  mkdir(path, { recursive: true }, (err) => {
     if (err) throw err;
     createFiles(path, postname, content)
   });
@@ -138,4 +136,6 @@ function init(feed) {
   })
 }
 
-init(config.input.source);
+fetchFeed(FEED_URL).then(json => {
+  init(json);
+});
