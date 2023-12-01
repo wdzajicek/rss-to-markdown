@@ -8,6 +8,7 @@
 
 ## Contents
 
+<!-- no toc -->
 - [RSS to Markdown](#rss-to-markdown)
   - [Contents](#contents)
   - [Overview](#overview)
@@ -15,13 +16,6 @@
   - [Installation](#installation)
   - [Usage](#usage)
   - [Old Instructions](#old-instructions)
-    - [Overview](#overview-1)
-    - [Prerequisites](#prerequisites-1)
-    - [Installation](#installation-1)
-    - [Usage](#usage-1)
-      - [Notes](#notes)
-    - [Customize File Contents](#customize-file-contents)
-    - [`cleanContent` Helper](#cleancontent-helper)
 
 -----
 
