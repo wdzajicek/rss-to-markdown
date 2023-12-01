@@ -1,8 +1,5 @@
-// const feed = require('./src/update.json');
-
 import { mkdir, writeFile } from 'node:fs';
 import chalk from 'chalk';
-// const { cleanContent } = require('./helpers/cleanContent'); // transforms strings to desired format
 
 const FEED_URL = 'https://update.kcc.edu/feed/update.json';
 const IMAGE_BASEURL = 'https://update.kcc.edu/feed/images/';
@@ -17,7 +14,7 @@ async function fetchFeed(url) {
 // Configure this object to set the source file and destination path
 const config = {
   output: {
-    path: './dist/test',
+    path: './dist/dec',
   }
 }
 

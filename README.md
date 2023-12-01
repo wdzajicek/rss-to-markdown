@@ -1,10 +1,8 @@
 # RSS to Markdown
 
 > 
-> Transform an RSS feed into Jekyll posts!!
+> Transform a JSON feed into Jekyll posts!!
 > 
-
-Takes an RSS feed (as an XML file) and generates a Jekyll post for each feed entry.
 
 -----
 
@@ -16,24 +14,26 @@ Takes an RSS feed (as an XML file) and generates a Jekyll post for each feed ent
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Notes](#notes)
-  - [Customize File Contents](#customize-file-contents)
-  - [`cleanContent` Helper](#cleancontent-helper)
+  - [Old Instructions](#old-instructions)
+    - [Overview](#overview-1)
+    - [Prerequisites](#prerequisites-1)
+    - [Installation](#installation-1)
+    - [Usage](#usage-1)
+      - [Notes](#notes)
+    - [Customize File Contents](#customize-file-contents)
+    - [`cleanContent` Helper](#cleancontent-helper)
 
 -----
 
 ## Overview
 
-This is a simple Node.js project for parsing an RSS feed into markdown files &mdash; one for each feed item.
+This is a simple Node.js project for parsing a JSON feed into markdown files &mdash; one for each feed item.
 
 Each markdown file is named using the Jekyll post naming convention and contains valid YAML front-matter.
 
-This project has minimal dependencies (`rss-parser` and `colors`):
+This project has minimal dependencies:
 
-- `rss-parser` to parse a string of XML (our RSS feed) into a JavaScript Object.
-- `colors` to create more aesthetically pleasing console output.
-
-There's also a folder `./helpers/` with a module `cleanContent.js` used for cleaning up less-than-ideal HTML image elements. See [`cleanContent` Helper](#cleancontent-helper) for more information.
+- `chalk` to create more aesthetically pleasing console output.
 
 -----
 
@@ -41,7 +41,7 @@ There's also a folder `./helpers/` with a module `cleanContent.js` used for clea
 
 - Node.js or [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
 
-This project was built using nodejs version `14.5.4`.
+Use the Nodejs version specified in `.nvmrc`.
 
 If you use NVM you can use this projects' `.nvmrc` file by running `nvm use` (while in the project directory.)
 
@@ -58,6 +58,67 @@ npm i # or `npm install` if you like typing more
 -----
 
 ## Usage
+
+1. Set `config.output.path` to the path you want your markdown files built (i.e. `./dist/my-feed`):
+   ```javascript
+   // process-update-feed.mjs
+
+   const config = {
+     output: {
+       path: './dist/my-feed'
+     }
+   }
+   ```
+2. Run the command:
+   ```bash
+   npm run process-update
+   ```
+
+-----
+
+## Old Instructions
+
+<details>
+<summary>It is not recommended that you use the old scripts/instructions</summary>
+
+### Overview
+
+This is a simple Node.js project for parsing an RSS feed into markdown files &mdash; one for each feed item.
+
+Each markdown file is named using the Jekyll post naming convention and contains valid YAML front-matter.
+
+***Note:** `colors` is not recommended as it had previous security issues and needs to be locked to version `1.4.0` including in your `package.json` file (use `1.4.0` and not `^1.4.0`).*
+
+This project has minimal dependencies:
+
+- ~~`rss-parser` to parse a string of XML (our RSS feed) into a JavaScript Object.~~
+- ~~`colors` to create more aesthetically pleasing console output.~~
+
+There's also a folder `./helpers/` with a module `cleanContent.js` used for cleaning up less-than-ideal HTML image elements. See [`cleanContent` Helper](#cleancontent-helper) for more information.
+
+-----
+
+### Prerequisites
+
+- Node.js or [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm)
+
+This project was built using nodejs version `14.5.4`.
+
+If you use NVM you can use this projects' `.nvmrc` file by running `nvm use` (while in the project directory.)
+
+-----
+
+### Installation
+
+```bash
+git clone rss-to-markdown
+cd rss-to-markdown
+npm i # or `npm install` if you like typing more
+```
+
+-----
+
+### Usage
 
 1. Place XML feed file in `./src` folder
 2. In `./index.js` file:
@@ -83,7 +144,7 @@ const config = {
 }
 ```
 
-### Notes
+#### Notes
 
 **Existing files will be overwritten!** \
 If the same file exists (in the output directory) it will be overwritten by running `npm start`.
@@ -92,7 +153,7 @@ If the output folder(s) specified (`config.output.path`) does not exist, it will
 
 -----
 
-## Customize File Contents
+### Customize File Contents
 
 The contents of each file is defined inside `index.js` &mdash; within a function named `processFeed()`.
 
@@ -126,7 +187,7 @@ function processFeed(feed) {
 
 -----
 
-## `cleanContent` Helper
+### `cleanContent` Helper
 
 The `./helper/` folder contains a `cleanContent.js` module for cleaning up html coming from the feed.
 
@@ -164,3 +225,5 @@ console.log(cleanHTML);
 // <img class="img-fluid" alt="" src="/uploads/image.jpg">
 // <img class="img-fluid" src="/uploads/image.jpg" alt="alt text">
 ```
+
+</details>
