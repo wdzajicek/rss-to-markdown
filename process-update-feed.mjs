@@ -50,7 +50,12 @@ const changePDFLocation = str => {
     str
       .replace(
         /href="\/&#58;b&#58;\/r\/sites\/updateeditor\/Shared%20Documents\/([^"]+)"/g,
-        `href="https://cdn.kcc.edu/update-documents/$1"`
+        (_m, capt) => {
+          const url = new URL(`https://cdn.kcc.edu/update-documents/${capt}`);
+
+          url.search = '';
+          return `href="${url}"`;
+        }
       )
   )
 }
