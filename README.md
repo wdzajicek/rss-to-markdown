@@ -52,8 +52,11 @@ Run the main script using npm:
 
 ```bash
 npm run process-feed --  --output=my-folder ## Generates the markdown files in ./dist/my-folder
+```
 
-# The following works too:
+The following works too:
+
+```bash
 npm run process-feed --  --output my-folder
 npm run process-feed --  -o=my-folder
 npm run process-feed --  -o my-folder
@@ -63,8 +66,11 @@ You can optionally specify a parent directory to build the files into using the 
 
 ```bash
 npm run process-feed --  --output=my-folder --dir-parent=my-parent ## Generates files in ./my-parent/my-folder
+```
 
-# The following also works:
+The following also works:
+
+```bash
 npm run process-feed --  --output=my-folder --dir-parent my-parent
 npm run process-feed --  --output=my-folder -d=my-parent
 npm run process-feed --  --output=my-folder -d my-parent
