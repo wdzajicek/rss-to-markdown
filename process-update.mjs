@@ -1,5 +1,6 @@
+import folder from './get-cli-args.mjs';
+import { info } from './color-console.mjs';
 import { mkdir, writeFile } from 'node:fs';
-import chalk from 'chalk';
 
 const FEED_URL = 'https://update.kcc.edu/feed/update.json';
 const IMAGE_BASEURL = 'https://update.kcc.edu/feed/images/';
@@ -14,17 +15,14 @@ async function fetchFeed(url) {
 // Configure this object to set the source file and destination path
 const config = {
   output: {
-    path: './dist/dec',
+    path: folder,
   }
 }
-
-// Setup a single color theme for chalk
-const info = chalk.cyanBright;
 
 function createFiles(path, postname, content) {
   writeFile(`${path}/${postname}.md`, content, (err) => {
     if (err) throw err;
-    console.log(`${info('[WROTE FILE]')}: ${path}/${postname}.md`);
+    console.log(`${info('[WROTE FILE]:')} ${path}/${postname}.md`);
   });
 }
 

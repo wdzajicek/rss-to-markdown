@@ -25,10 +25,6 @@ This is a simple Node.js project for parsing a JSON feed into markdown files &md
 
 Each markdown file is named using the Jekyll post naming convention and contains valid YAML front-matter.
 
-This project has minimal dependencies:
-
-- `chalk` to create more aesthetically pleasing console output.
-
 -----
 
 ## Prerequisites
@@ -46,27 +42,49 @@ If you use NVM you can use this projects' `.nvmrc` file by running `nvm use` (wh
 ```bash
 git clone rss-to-markdown
 cd rss-to-markdown
-npm i # or `npm install` if you like typing more
 ```
 
 -----
 
 ## Usage
 
-1. Set `config.output.path` to the path you want your markdown files built (i.e. `./dist/my-feed`):
-   ```javascript
-   // process-update-feed.mjs
+Run the main script using npm:
 
-   const config = {
-     output: {
-       path: './dist/my-feed'
-     }
-   }
-   ```
-2. Run the command:
-   ```bash
-   npm run process-update
-   ```
+```bash
+npm run process-feed --  --output=my-folder ## Generates the markdown files in ./dist/my-folder
+
+# The following works too:
+npm run process-feed --  --output my-folder
+npm run process-feed --  -o=my-folder
+npm run process-feed --  -o my-folder
+```
+
+You can optionally specify a parent directory to build the files into using the `--dir-parent` option:
+
+```bash
+npm run process-feed --  --output=my-folder --dir-parent=my-parent ## Generates files in ./my-parent/my-folder
+
+# The following also works:
+npm run process-feed --  --output=my-folder --dir-parent my-parent
+npm run process-feed --  --output=my-folder -d=my-parent
+npm run process-feed --  --output=my-folder -d my-parent
+```
+
+View the help message using `-h` or `--help`:
+
+```bash
+npm run process-feed -- -h
+# Or
+npm run process-feed -- --help
+
+usage: npm run process-update -- [options]
+  options:
+    -o, --output        Specify the output folder to save files to  [string]         [required]
+    -d, --dir-prefix    Specify directory prefix for output folder  [string]  [default: "dist"]
+```
+
+If you need to change the URL to the feed, or where images are kept, adjust the `FEED_URL` and
+`IMAGE_BASEURL` constants in `./process-update.mjs`.
 
 -----
 
