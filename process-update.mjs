@@ -61,6 +61,15 @@ const changePDFLocation = str => {
           return `href="${url}"`;
         }
       )
+      .replace(
+        /href="\/sites\/([^"]+)"/g,
+        (_match, capture) => {
+          const url = new URL(`https://kankakeecc.sharepoint.com/sites/${capture}`);
+
+          url.search = '';
+          return `href="${url}" target="_blank" rel="noopener"`;
+        }
+      )
   )
 }
 
