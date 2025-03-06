@@ -2,10 +2,10 @@
   "name": "rss-to-markdown",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "node process-update.mjs",
     "process-update": "node process-update.mjs"
   },
   "keywords": [],

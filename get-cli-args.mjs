@@ -24,7 +24,7 @@ function findArgs(args, argAssignmentRegex, argRegex) {
   return null;
 }
 
-const npmCommand = process.argv[1].replace(/^.+\/(.+)\.m?js$/, `$1`);
+const npmCommand = process.env.npm_lifecycle_event;
 
 if (process.argv.length == 2) {
   console.error('Expected at least one argument!');
