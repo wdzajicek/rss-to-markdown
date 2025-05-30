@@ -52,6 +52,12 @@ const changePDFLocation = str => {
   return (
     str
       .replace(
+        /href="(\/&#58;b&#58;\/s\/updateeditor\/[^"]+)"/g,
+        (_match, capture) => {
+          return `href="https://kankakeecc.sharepoint.com${capture}" target="_blank"`;
+        }
+      )
+      .replace(
         // SharePoint PDF URL's will be in this format:
         /href="\/&#58;b&#58;\/r\/sites\/updateeditor\/Shared%20Documents\/([^"]+)"/g,
         (_m, capt) => {
